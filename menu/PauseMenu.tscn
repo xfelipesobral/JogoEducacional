@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://recursos/menu/OpenBook.png" type="Texture" id=1]
 [ext_resource path="res://recursos/fontes/ChiKareGo2.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://menu/PauseMenu.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -14,6 +15,7 @@ default_font = SubResource( 1 )
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -46,17 +48,44 @@ margin_right = -40.0
 margin_bottom = 250.0
 theme = SubResource( 2 )
 
-[node name="Return" type="Label" parent="Controls"]
+[node name="ReturnGame" type="Button" parent="Controls"]
 margin_right = 260.0
-margin_bottom = 30.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Voltar ao jogo"
-align = 1
+margin_bottom = 36.0
+flat = true
 
-[node name="Exit" type="Label" parent="Controls"]
-margin_top = 34.0
-margin_right = 260.0
-margin_bottom = 64.0
+[node name="Label" type="Label" parent="Controls/ReturnGame"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -130.0
+margin_top = -15.0
+margin_right = 130.0
+margin_bottom = 15.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Menu principal"
+text = "Voltar ao Jogo"
 align = 1
+valign = 2
+
+[node name="MainMenu" type="Button" parent="Controls"]
+margin_top = 40.0
+margin_right = 260.0
+margin_bottom = 76.0
+flat = true
+
+[node name="Label" type="Label" parent="Controls/MainMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -130.0
+margin_top = -15.0
+margin_right = 130.0
+margin_bottom = 15.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Menu Principal"
+align = 1
+valign = 2
+
+[connection signal="pressed" from="Controls/ReturnGame" to="." method="_on_ReturnGame_pressed"]
+[connection signal="pressed" from="Controls/MainMenu" to="." method="_on_MainMenu_pressed"]
